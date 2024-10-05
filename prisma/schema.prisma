@@ -1,0 +1,75 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("POSTGRES_PRISMA_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  phone     String   @unique
+  token     String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model PhoneVerification {
+  id          Int      @id @default(autoincrement())
+  phoneNumber String   @unique
+  code        String
+  createdAt   DateTime @default(now())
+}
+
+model Media {
+  id               Int       @id @default(autoincrement())
+  name             String @unique
+  country          String
+  rating           String
+  minYearShow      Int
+  imageUrl         String
+  imageUrlTitle    String
+  imageUrlFavorite String
+	description    String
+  createdAt        DateTime  @default(now())
+  type             MediaType
+
+  duration       Int?
+  yearPublishing Int?
+
+
+  rangeYears String?
+  seasons    Season[] @relation("SeasonsSeasons")
+  genres     Genre[]  @relation("MediaGenres")
+}
+
+enum MediaType {
+  FILM
+  SERIA
+}
+
+model Season {
+  id             Int       @id @default(autoincrement())
+  number         Int
+  seriasId       Int
+  yearPublishing Int
+  description    String
+  serias         Media     @relation("SeasonsSeasons", fields: [seriasId], references: [id])
+  episodes       Episode[] @relation("SeasonEpisodes")
+}
+
+model Episode {
+  id        Int    @id @default(autoincrement())
+  duration  Int
+  number    Int
+  episodeId Int
+  seasons   Season @relation("SeasonEpisodes", fields: [episodeId], references: [id])
+}
+
+model Genre {
+  id          Int     @id @default(autoincrement())
+  name        String
+  description String?
+  media       Media[] @relation("MediaGenres")
+}

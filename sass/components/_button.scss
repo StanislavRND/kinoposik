@@ -1,0 +1,35 @@
+.button__next {
+  display: flex;
+	align-items: center;
+	justify-content: center;
+  width: 55%;
+  height: 3.2rem;
+  background-color: $primaryYellow;
+  color: $primaryBlack;
+  font-size: 1.1rem;
+  font-weight: 500;
+  border-radius: 16px;
+  margin-bottom: 1.5rem;
+  transition: 0.2s ease;
+}
+.button__close {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #292929;
+  transition: 0.3s ease;
+  svg {
+    margin-top: 1px;
+    margin-left: 0.5px;
+    width: 11px;
+    height: 12px;
+  }
+
+  &:hover {
+    transition: 0.3s ease;
+    background-color: #393939;
+  }
+}

@@ -1,0 +1,118 @@
+@import '../../../../sass/variables';
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+
+  .inputContainer {
+    width: 55%;
+    position: relative;
+  }
+
+  .input {
+    height: 3.2rem;
+    width: 100%;
+    background-color: $greyDark;
+    border-radius: 16px;
+    border: 1px solid rgb(73, 73, 73);
+    padding-left: 1.1rem;
+    caret-color: white;
+    transition: 0.3s ease;
+    margin-bottom: 3rem;
+    color: white;
+    font-size: 1.2rem;
+
+    &:hover {
+      transition: 0.3s ease;
+      background-color: $greyLight;
+    }
+    &:focus {
+      transition: 0.3s ease;
+      background-color: $greyUltraLight;
+    }
+
+    &::placeholder {
+      font-size: 1.2rem;
+      color: white;
+    }
+
+    &:-webkit-autofill {
+      background-color: $greyUltraLight;
+    }
+  }
+  label {
+    position: absolute;
+    top: 13px;
+    right: 18px;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #717171;
+    transition: 0.3s ease;
+    cursor: pointer;
+    svg {
+      width: 9px;
+      height: 9px;
+    }
+  }
+}
+.input.sms {
+  width: 60%;
+	font-size: 2rem;
+	font-weight: 500;
+	height: 4rem;
+  position: relative;
+	text-align: center;
+	letter-spacing: 8px;
+
+  &::placeholder {
+    position: absolute;
+    bottom: -2.5px;
+    transform: translateY(-50%);
+  }
+}
+.agreement {
+  width: 58%;
+  text-align: center;
+  color: #818181;
+  font-size: 0.9rem;
+  line-height: 1.3rem;
+
+  a {
+    color: $primaryYellow;
+  }
+}
+.repeat__code {
+	margin-top: 10px;
+	cursor: pointer;
+}
+.auth__text {
+	color: #bdbdbd;
+	margin-bottom: 25px;
+}
+
+.sms__error {
+	margin-top: 10px;
+	color: #e64646;
+	font-size: 0.8rem;
+	margin-bottom: 2.6rem;
+}
+
+.code {
+	position: absolute;
+	top: 50px;
+	width: 120px;
+	height: 40px;
+	background-color: rgb(255, 255, 255);
+	color: rgb(9, 158, 9);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 10px;
+	box-shadow: 0 0 10px 3px rgba(35, 153, 2, 0.5)
+}

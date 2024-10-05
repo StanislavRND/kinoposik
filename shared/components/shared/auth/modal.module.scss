@@ -1,0 +1,53 @@
+@import '../../../../sass/variables';
+
+.modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(15, 15, 15, 0.91);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+}
+
+.modal__content {
+  background-color: #1a1a1a;
+  margin: 0 auto;
+  padding: 30px;
+  width: 40%;
+  min-width: 700px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  border-radius: 30px;
+  height: 480px;
+}
+
+.button__block {
+  display: flex;
+
+	svg {
+		cursor: pointer;
+	}
+}
+.info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  color: white;
+
+  .title {
+    font-size: 1.8rem;
+    font-weight: 500;
+    letter-spacing: 2px;
+    color: $primaryYellow;
+    margin-bottom: 1.8rem;
+  }
+  .phone__text {
+    font-size: 1.8rem;
+    font-weight: 500;
+    margin-bottom: 10px;
+  }
+}

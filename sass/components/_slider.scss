@@ -1,0 +1,108 @@
+.react-multi-carousel-item {
+  padding-right: 40px;
+	opacity: 0.4;
+
+	a {
+		pointer-events:none;
+	}
+	cursor: pointer;
+}
+.react-multi-carousel-item--active {
+	opacity: 1;
+	width: 920px !important;
+	margin-left: -20px;
+	padding-right: 20px;
+	
+	.slider__img .slider__rating {
+		right: 40px;
+	}
+	a {
+		pointer-events: all;
+	}
+}
+.react-multiple-carousel__arrow {
+	z-index: 10 !important;
+	border-radius: 10px !important;
+	background-color: #202020 !important;
+	width: 46px;
+	height: 46px;
+	border: 1px solid grey !important;
+
+	&:hover {
+		opacity: 0.7 !important;
+		border: 1px solid rgb(255, 255, 255) !important;
+
+		&::before {
+			opacity: 1;
+		}
+		
+	}
+}
+.react-multiple-carousel__arrow--left::before {
+	margin-left: -4px;
+}
+
+.slider {
+	margin-bottom: 50px;
+	&__img {
+		display: inline-block;
+		width: 100%;
+		height: 500px;
+		border: 1px solid rgb(49, 49, 49);
+		border-radius: 2px;
+	
+		img {
+			width: 100%;
+			height: 100%;
+			border-radius: 2px;
+			background-size: cover;
+		}
+	}
+	&__rating {
+		position: absolute;
+		top: 20px;
+		right: 60px;
+		background-color: #d6b911;
+		opacity: 1;
+		width: 40px;
+		height: 28px;
+		border-radius: 5px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		color: rgb(255, 255, 255);
+		font-size: 0.9rem;
+	}
+	&__min-age {
+		position: absolute;
+		bottom: 20px;
+		left: 40px;
+		background-color: #333333;
+		opacity: 0.7;
+		width: 34px;
+		height: 24px;
+		border-radius: 5px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		color: rgb(255, 255, 255);
+		font-size: 0.8rem;	
+	}
+}
+
+.slider__skeleton {
+  width: calc(100% - 10px);
+  display: flex;
+  margin-bottom: 50px;
+
+  svg {
+    flex: 0 0 calc(23% - (20px / 2)); 
+    &:nth-child(2) {
+      flex: 0 0 calc(54% - (20px / 2));
+    }
+    margin-right: 20px; 
+    &:last-child {
+      margin-right: 0; 
+    }
+  }
+}
