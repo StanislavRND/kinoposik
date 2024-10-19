@@ -1,20 +1,20 @@
 'use client';
 
+import { useUserData } from '@/shared/hooks/use-user';
 import { checkAuth, logout } from '@/shared/services/auth';
-import { getUserCurrent } from '@/shared/services/users';
-import { User } from '@/types/User';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
+import { SkeletonHeader } from '../ui/index';
 import { ModalAuth } from './auth/index';
 import { Menu } from './index';
-import { SkeletonHeader } from '../ui/index';
 
 export const Header: React.FC = ({}) => {
   const [isModal, setIsModal] = useState(false);
   const [userMenu, setUserMenu] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState(true);
-  const [user, setUser] = useState<User>();
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  const userData = useUserData();
 
   const handleMenuUser = () => {
     setUserMenu(!userMenu);
@@ -22,8 +22,8 @@ export const Header: React.FC = ({}) => {
 
   const handleLogoutUser = async () => {
     try {
-      if (user) {
-        await logout(user.id);
+      if (userData) {
+        await logout(userData.id);
         setUserMenu(false);
         setIsAuthenticated(false);
       }
@@ -45,25 +45,11 @@ export const Header: React.FC = ({}) => {
       }
     };
 
-    const fetchUser = async () => {
-      if (isAuthenticated) {
-        try {
-          const user = await getUserCurrent();
-          setUser(user);
-        } catch (error) {
-          console.error('Ошибка получение данных', error);
-        }
-      }
-    };
-
-    fetchUser();
     checkUserAuth();
   }, [isAuthenticated]);
 
   if (isLoading) {
-    return (
-      <SkeletonHeader/>
-    );
+    return <SkeletonHeader />;
   }
 
   return (
@@ -107,7 +93,9 @@ export const Header: React.FC = ({}) => {
             </svg>
           </button>
         )}
-        {userMenu && user && <Menu userPhone={user.phone} handleLogoutUser={handleLogoutUser} />}
+        {userMenu && userData && (
+          <Menu userPhone={userData.phone} handleLogoutUser={handleLogoutUser} />
+        )}
         <div className="header__items">
           <Link href={'/all'}>
             <div className="header__item">Фильмы</div>

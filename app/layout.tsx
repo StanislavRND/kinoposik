@@ -1,14 +1,14 @@
 import { Header } from '@/shared/components/index';
 import type { Metadata } from 'next';
 
-import { Rubik } from 'next/font/google';
-import '../App.scss';
+import { Roboto } from 'next/font/google';
+import '../sass/App.scss';
 import StoreProvider from './StoreProvider';
 
-const rubik = Rubik({
+const rubik = Roboto({
   subsets: ['cyrillic'],
-  variable: '--font-rubik',
-  weight: ['400', '500', '600', '700', '800', '900'],
+  variable: '--font-roboto',
+  weight: ['400', '500', '700', '900'],
 });
 
 export const metadata: Metadata = {

@@ -19,7 +19,7 @@ export const FormPhone = ({ setPhoneValue, setMessage }: Props) => {
   const [isVisibleClear, setIsVisibleClear] = useState(false);
   const [phone, setPhone] = useState('');
   const [operator, setOperator] = useState<number>();
-	const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
@@ -59,7 +59,7 @@ export const FormPhone = ({ setPhoneValue, setMessage }: Props) => {
   const onSubmit = (data: Input) => {
     setPhoneValue(data.phone);
     setMessage(true);
-		setIsLoading(true);
+    setIsLoading(true);
   };
 
   const isButtonDisabled =

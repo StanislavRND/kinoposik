@@ -23,6 +23,8 @@ export default async function WatchPage({ params }: WatchPageProps) {
           episodes: true,
         },
       },
+      actors: true,
+      ratings: true,
     },
   });
 

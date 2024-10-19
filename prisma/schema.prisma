@@ -13,6 +13,19 @@ model User {
   token     String?
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+	ratings   Rating[]
+	favorites Favorites[]
+}
+
+model Favorites {
+  id      Int @id @default(autoincrement())
+  userId  Int
+  mediaId Int
+
+  @@unique([userId, mediaId]) 
+
+  user User @relation(fields: [userId], references: [id])
+  media Media @relation(fields: [mediaId], references: [id])
 }
 
 model PhoneVerification {
@@ -24,24 +37,39 @@ model PhoneVerification {
 
 model Media {
   id               Int       @id @default(autoincrement())
-  name             String @unique
+  name             String    @unique
   country          String
-  rating           String
+  rating           Float?
   minYearShow      Int
   imageUrl         String
   imageUrlTitle    String
   imageUrlFavorite String
-	description    String
+  description      String
   createdAt        DateTime  @default(now())
   type             MediaType
 
   duration       Int?
   yearPublishing Int?
 
-
   rangeYears String?
   seasons    Season[] @relation("SeasonsSeasons")
   genres     Genre[]  @relation("MediaGenres")
+	actors    Actors[] @relation("MediaActors")
+	ratings   Rating[]
+	favorites        Favorites[]
+}
+
+model Rating {
+  id          Int     @id @default(autoincrement())
+  userId      Int
+  mediaId     Int
+  score       Int     
+  createdAt   DateTime @default(now())
+  
+  user        User    @relation(fields: [userId], references: [id])
+  media       Media   @relation(fields: [mediaId], references: [id])
+
+  @@unique([userId, mediaId]) 
 }
 
 enum MediaType {
@@ -60,11 +88,13 @@ model Season {
 }
 
 model Episode {
-  id        Int    @id @default(autoincrement())
-  duration  Int
-  number    Int
-  episodeId Int
-  seasons   Season @relation("SeasonEpisodes", fields: [episodeId], references: [id])
+  id          Int    @id @default(autoincrement())
+  duration    Int
+  number      Int
+  episodeId   Int
+  description String
+  imageUrl    String
+  seasons     Season @relation("SeasonEpisodes", fields: [episodeId], references: [id])
 }
 
 model Genre {
@@ -72,4 +102,12 @@ model Genre {
   name        String
   description String?
   media       Media[] @relation("MediaGenres")
+}
+
+model Actors {
+  id     Int    @id @default(autoincrement())
+  name   String
+  role   String
+  imgUrl String?
+	media  Media[] @relation("MediaActors")
 }

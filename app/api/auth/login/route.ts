@@ -44,7 +44,7 @@ export async function POST(request: Request) {
   }
 }
 
-function generateToken(userId: number): string {
+const generateToken = (userId: number): string => {
   const payload = { id: userId };
   return jwt.sign(payload, process.env.JWT_SECRET as string, { expiresIn: '1h' }); 
 }

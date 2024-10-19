@@ -1,9 +1,9 @@
 'use client';
+import { useGetPremieresQuery } from '@/shared/store/premieres';
 import Link from 'next/link';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import { SkeletonCarousel } from '../ui';
-import { useGetPremieresQuery } from '@/shared/store/premieres';
 
 export const Slider = () => {
   const { data: premieres, isLoading } = useGetPremieresQuery();
@@ -29,9 +29,12 @@ export const Slider = () => {
           focusOnSelect={false}
           responsive={responsive}>
           {premieres?.map((el, index) => (
-            <Link className="slider__img" key={index} href={`/watch/${encodeURIComponent(el.name)}`}>
+            <Link
+              className="slider__img"
+              key={index}
+              href={`/watch/${encodeURIComponent(el.name)}`}>
               <img src={el.imageUrl} alt="No img" />
-              <div className="slider__rating">{el.rating}</div>
+              <div className="slider__rating">{el.rating?.toFixed(1)}</div>
               <div className="slider__min-age">{el.minYearShow}+</div>
             </Link>
           ))}

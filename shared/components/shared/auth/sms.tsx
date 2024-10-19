@@ -1,7 +1,6 @@
 'use client';
 
-import { sendCode } from '@/shared/services/auth';
-import { userAuth } from '@/shared/services/auth';
+import { sendCode, userAuth } from '@/shared/services/auth';
 import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { ButtonNext } from '../../ui/index';
@@ -55,6 +54,7 @@ export const FormSms = ({ phoneValue, setIsModal, setIsAuthenticated }: Props) =
       if (sms === code) {
         setIsLoading(true);
         await userAuth(phoneValue);
+        window.location.reload();
         setIsModal(false);
         setIsAuthenticated(true);
       } else {
@@ -92,7 +92,6 @@ export const FormSms = ({ phoneValue, setIsModal, setIsAuthenticated }: Props) =
 
           {error.length !== 0 && <p className={styles.sms__error}>{error}</p>}
         </div>
-
         <ButtonNext isLoading={isLoading} isButtonDisabled={isButtonDisabled} />
       </form>
     </>

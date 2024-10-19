@@ -1,18 +1,16 @@
-import { useState } from 'react';
-import {ButtonClose} from '../../ui/index';
+import React, { useState } from 'react';
+import { ButtonClose } from '../../ui/index';
 import { FormPhone, FormSms } from './index';
 import styles from './modal.module.scss';
-import React from 'react';
 
 type Props = {
   setIsModal: React.Dispatch<React.SetStateAction<boolean>>;
-	setIsAuthenticated: React.Dispatch<React.SetStateAction<boolean>>;
+  setIsAuthenticated: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 export const ModalAuth = ({ setIsModal, setIsAuthenticated }: Props) => {
   const [phoneValue, setPhoneValue] = useState('');
   const [message, setMessage] = useState(false);
-
 
   return (
     <div className={styles.modal}>
@@ -45,7 +43,11 @@ export const ModalAuth = ({ setIsModal, setIsAuthenticated }: Props) => {
           {!message ? (
             <FormPhone setPhoneValue={setPhoneValue} setMessage={setMessage} />
           ) : (
-            <FormSms setIsAuthenticated={setIsAuthenticated} phoneValue={phoneValue} setIsModal={setIsModal} />
+            <FormSms
+              setIsAuthenticated={setIsAuthenticated}
+              phoneValue={phoneValue}
+              setIsModal={setIsModal}
+            />
           )}
         </div>
       </div>

@@ -1,5 +1,5 @@
+import { generateCode } from '@/shared/lib';
 import { NextResponse } from 'next/server';
-import { generateCode } from '@/utils/GenerateCode'; 
 
 export async function POST(request: Request) {
   const { phoneNumber } = await request.json();

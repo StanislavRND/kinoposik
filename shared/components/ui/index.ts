@@ -1,4 +1,13 @@
-export { ButtonClose } from './ButtonClose';
-export { ButtonNext } from './ButtonNext';
-export { SkeletonCarousel } from './SkeletonCarousel';
-export { SkeletonHeader } from './SkeletonHeader';
+export { AlertShow } from './alert';
+export { ButtonClose } from './button-close';
+export { ButtonNext } from './button-next';
+export { ButtonShow } from './button-watch';
+export { EpisodesSlider } from './episodes-slider';
+export { FavoriteIcon } from './icons/favorite-icon';
+export { FavoriteHeaderIcon } from './icons/favorite-icon-header';
+export { LogoutIcon } from './icons/logout-icon';
+export { StarIcon } from './icons/star-icon';
+export { SubscriptionIcon } from './icons/subscription-icon';
+export { UserIcon } from './icons/user-icon';
+export { SkeletonCarousel } from './skeleton-carousel';
+export { SkeletonHeader } from './skeleton-header';

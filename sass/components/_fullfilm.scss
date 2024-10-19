@@ -28,6 +28,7 @@
   &__block {
     display: flex;
 		position: relative;
+		margin-top: -45px;
   }
 
   &__poster {
@@ -105,6 +106,37 @@
     left: 50px;
 		z-index: 2;
 
+		&-grades {
+			display: flex;
+			padding: 4px;
+			background-color: #292929;
+			margin-left: 5px;
+			border-radius: 15px;
+			gap: 5px;
+			position: relative;
+
+			&-number {
+				height: 100%;
+				width: 50px;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				border-radius: 15px;
+				color: white;
+				background-color: #303030;
+				transition: 0.3s ease;
+				cursor: pointer;
+		
+				&:hover {
+					background-color: #e9c601;
+					transition: 0.3s ease;
+				}
+			}
+			.full-film__detail-grades-number.selected {
+				background-color: #e9c601;
+			}
+		}
+
     &-flex-info {
       display: flex;
       gap: 20px;
@@ -180,7 +212,23 @@
           margin-bottom: -2px;
         }
       }
+
+			&-grade {
+        border-radius: 20px;
+        height: 55px;
+        width: 55px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: $greyDark;
+        transition: 0.3s ease;
+
+        &:hover {
+          background-color: $greyLight;
+          transition: 0.3s ease;
+        }
     }
+	}
     &-name {
       color: rgb(146, 146, 146);
       margin-top: 30px;
@@ -197,6 +245,43 @@
       }
     }
   }
+
+
+	&__seasons {
+		margin-bottom: 50px;
+
+		&-numbers {
+			display: flex;
+			gap: 25px;
+			align-items: center;
+			font-size: 1.7rem;
+			font-weight: 700;
+			margin-bottom: 30px;
+		}
+
+		&-number {
+			display: flex;
+			gap: 10px;
+			cursor: pointer;
+		}
+
+		&-number > div {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			width: 50px;
+			height: 50px;
+			border-radius: 10px;
+			font-size: 1.15rem;
+			font-weight: 500;
+			transition: 0.5s easy;
+
+			&:hover {
+				background-color: #292929;
+				transition: 0.5s easy;
+			}
+		}
+	}
   &__info {
     max-width: 1450px;
     padding: 0 15px;
@@ -214,6 +299,7 @@
       font-size: 1.7rem;
       font-weight: 500;
       margin-bottom: 30px;
+			margin-top: 60px;
     }
 
     &-block {
