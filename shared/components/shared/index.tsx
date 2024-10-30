@@ -12,3 +12,4 @@ export { ModalGrade } from './modal-grade';
 export { Premier } from './premieres';
 export { Profile } from './profile';
 export { Slider } from './slider';
+export { Sort } from './sort';

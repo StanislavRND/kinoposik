@@ -2,8 +2,8 @@ import { Header } from '@/shared/components/index';
 import type { Metadata } from 'next';
 
 import { Roboto } from 'next/font/google';
-import '../sass/App.scss';
-import StoreProvider from './StoreProvider';
+import '../../sass/App.scss';
+import StoreProvider from '../StoreProvider';
 
 const rubik = Roboto({
   subsets: ['cyrillic'],

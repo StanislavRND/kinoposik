@@ -1,5 +1,6 @@
 import { prisma } from '@/prisma/prisma.client';
 import { MediaDetail } from '@/shared/components';
+import { Suspense } from 'react';
 
 type WatchPageProps = {
   params: {
@@ -32,7 +33,11 @@ export default async function WatchPage({ params }: WatchPageProps) {
     return <div>Медиа не найдено</div>;
   }
 
-  return <MediaDetail mediaDetail={mediaItem} />;
+  return (
+    <Suspense>
+      <MediaDetail mediaDetail={mediaItem} />
+    </Suspense>
+  );
 }
 
 export async function generateStaticParams() {
