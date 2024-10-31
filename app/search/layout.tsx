@@ -1,6 +1,13 @@
 import type { Metadata } from 'next';
 
 import '../../sass/App.scss';
+import { Roboto } from 'next/font/google';
+
+const rubik = Roboto({
+  subsets: ['cyrillic'],
+  variable: '--font-roboto',
+  weight: ['400', '500', '700', '900'],
+});
 
 export const metadata: Metadata = {
   title: 'Кинопосик',
@@ -13,7 +20,7 @@ export default function SearchLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html>
+    <html className={rubik.variable}>
       <body>
         <div className="search">{children}</div>
       </body>

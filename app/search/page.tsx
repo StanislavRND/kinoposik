@@ -1,10 +1,16 @@
-import React from 'react';
+import { SearchCom, SearchResult } from '@/shared/components';
 
-const Home: React.FC = () => {
+const SearchPage = () => {
   return (
-    <div>писька</div>
+    <>
+      <div className="search__container">
+        <div className="search__header">
+          <SearchCom />
+        </div>
+        <SearchResult />
+      </div>
+    </>
   );
 };
 
-export default Home;
-
+export default SearchPage;

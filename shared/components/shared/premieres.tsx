@@ -1,6 +1,6 @@
 'use client';
 
-import { convertMinuteToHours, formatSeasons } from '@/shared/lib';
+import { capitalizeFirstLetter, convertMinuteToHours, formatSeasons } from '@/shared/lib';
 import { useGetPremieresQuery } from '@/shared/store/premieres';
 import { Genre } from '@/shared/types/Genre';
 import { useRouter } from 'next/navigation';
@@ -62,7 +62,7 @@ export const Premier: React.FC = () => {
                       : convertMinuteToHours(item.duration ?? 0)}
                   </div>
                 </div>
-                <div className="film__name">{item.name}</div>
+                <div className="film__name">{capitalizeFirstLetter(item.name)}</div>
               </div>
             ))}
           </>

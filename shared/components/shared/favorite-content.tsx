@@ -1,3 +1,4 @@
+import { capitalizeFirstLetter } from '@/shared/lib';
 import { Favorite } from '@/shared/types/Favorite';
 import Link from 'next/link';
 
@@ -22,7 +23,9 @@ export const FavoriteContent: React.FC<Props> = ({ favorites }) => {
                 <img src={el.media.imageUrlFavorite} alt="" />
                 <div className="profile__favorite-film-min-year">{el.media.minYearShow}+</div>
                 <div className="profile__favorite-film-rating">{el.media.rating?.toFixed(1)}</div>
-                <div className="profile__favorite-film-name">{el.media.name}</div>
+                <div className="profile__favorite-film-name">
+                  {capitalizeFirstLetter(el.media.name)}
+                </div>
               </div>
             </Link>
           ))}

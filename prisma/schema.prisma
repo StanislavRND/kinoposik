@@ -37,7 +37,7 @@ model PhoneVerification {
 
 model Media {
   id               Int       @id @default(autoincrement())
-  name             String    @unique
+  name             String   @unique
   country          String
   rating           Float?
   minYearShow      Int

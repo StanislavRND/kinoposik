@@ -13,3 +13,5 @@ export { Premier } from './premieres';
 export { Profile } from './profile';
 export { Slider } from './slider';
 export { Sort } from './sort';
+export {SearchCom} from './search-com'
+export {SearchResult} from './search-result'
