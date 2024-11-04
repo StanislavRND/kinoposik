@@ -7,7 +7,7 @@ import React, { useEffect } from 'react';
 import { StarIcon } from '../ui';
 
 interface Props {
-  userData: User;
+  userData: User | null;
   mediaId: number;
   isAuthenticated: boolean;
   isLoading: boolean;

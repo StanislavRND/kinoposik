@@ -17,10 +17,10 @@ export async function GET(request: Request) {
 
     const user = await prisma.user.findUnique({
       where: { id: userId },
-			include: {
-				ratings: true,
-				favorites: true,
-			}
+      include: {
+        ratings: true,
+        favorites: true,
+      },
     });
 
     if (!user) {

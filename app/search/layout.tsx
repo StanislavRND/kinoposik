@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 
-import '../../sass/App.scss';
 import { Roboto } from 'next/font/google';
+import '../../sass/App.scss';
 
 const rubik = Roboto({
   subsets: ['cyrillic'],

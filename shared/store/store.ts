@@ -1,14 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { premieresSlice } from './premieres';
-import { filmsSlice } from './films';
 
 export const makeStore = () => {
   return configureStore({
     reducer: {
       [premieresSlice.reducerPath]: premieresSlice.reducer,
-			[filmsSlice.reducerPath]: filmsSlice.reducer,
     },
-    middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(premieresSlice.middleware).concat(filmsSlice.middleware),
+    middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(premieresSlice.middleware),
   });
 };
 

@@ -63,12 +63,12 @@
 }
 .input.sms {
   width: 60%;
-	font-size: 2rem;
-	font-weight: 500;
-	height: 4rem;
+  font-size: 2rem;
+  font-weight: 500;
+  height: 4rem;
   position: relative;
-	text-align: center;
-	letter-spacing: 8px;
+  text-align: center;
+  letter-spacing: 8px;
 
   &::placeholder {
     position: absolute;
@@ -88,31 +88,31 @@
   }
 }
 .repeat__code {
-	margin-top: 10px;
-	cursor: pointer;
+  margin-top: 10px;
+  cursor: pointer;
 }
 .auth__text {
-	color: #bdbdbd;
-	margin-bottom: 25px;
+  color: #bdbdbd;
+  margin-bottom: 25px;
 }
 
 .sms__error {
-	margin-top: 10px;
-	color: #e64646;
-	font-size: 0.8rem;
-	margin-bottom: 2.6rem;
+  margin-top: 10px;
+  color: #e64646;
+  font-size: 0.8rem;
+  margin-bottom: 2.6rem;
 }
 
 .code {
-	position: absolute;
-	top: 50px;
-	width: 120px;
-	height: 40px;
-	background-color: rgb(255, 255, 255);
-	color: rgb(9, 158, 9);
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	border-radius: 10px;
-	box-shadow: 0 0 10px 3px rgba(35, 153, 2, 0.5)
+  position: absolute;
+  top: 50px;
+  width: 120px;
+  height: 40px;
+  background-color: rgb(255, 255, 255);
+  color: rgb(9, 158, 9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  box-shadow: 0 0 10px 3px rgba(35, 153, 2, 0.5);
 }

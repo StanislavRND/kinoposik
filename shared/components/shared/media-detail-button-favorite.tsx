@@ -8,7 +8,7 @@ import React, { useEffect, useState } from 'react';
 import { FavoriteIcon } from '../ui';
 
 interface Props {
-  userData: User;
+  userData: User | null;
   mediaId: number;
   isAuthenticated: boolean;
   isLoading: boolean;

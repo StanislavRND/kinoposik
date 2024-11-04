@@ -24,7 +24,7 @@ export async function GET(request: Request) {
     );
 
   const whereClause: Prisma.MediaWhereInput = {
-    type: 'FILM' as MediaType,
+    type: 'SERIA' as MediaType,
   };
 
   const countryConditions = appliedFilters
@@ -51,9 +51,6 @@ export async function GET(request: Request) {
     const films = await prisma.media.findMany({
       where: whereClause,
       orderBy: orderBy as Prisma.MediaOrderByWithRelationInput,
-      include: {
-        genres: true,
-      },
     });
 
     return NextResponse.json(films);

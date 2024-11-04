@@ -31,7 +31,7 @@ export const Menu: React.FC<Props> = ({ handleLogoutUser, userPhone }: Props) =>
                 Мои подписки
               </li>
             </Link>
-            <Link href={'/home'}>
+            <Link href={'/'}>
               <li onClick={handleLogoutUser} className="header__modal-item">
                 <LogoutIcon />
                 Выйти из аккаунта

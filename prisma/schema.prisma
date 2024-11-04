@@ -8,13 +8,13 @@ generator client {
 }
 
 model User {
-  id        Int      @id @default(autoincrement())
-  phone     String   @unique
+  id        Int         @id @default(autoincrement())
+  phone     String      @unique
   token     String?
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-	ratings   Rating[]
-	favorites Favorites[]
+  createdAt DateTime    @default(now())
+  updatedAt DateTime    @updatedAt
+  ratings   Rating[]
+  favorites Favorites[]
 }
 
 model Favorites {
@@ -22,10 +22,10 @@ model Favorites {
   userId  Int
   mediaId Int
 
-  @@unique([userId, mediaId]) 
-
-  user User @relation(fields: [userId], references: [id])
+  user  User  @relation(fields: [userId], references: [id])
   media Media @relation(fields: [mediaId], references: [id])
+
+  @@unique([userId, mediaId])
 }
 
 model PhoneVerification {
@@ -36,40 +36,41 @@ model PhoneVerification {
 }
 
 model Media {
-  id               Int       @id @default(autoincrement())
-  name             String   @unique
-  country          String
-  rating           Float?
-  minYearShow      Int
-  imageUrl         String
-  imageUrlTitle    String
-  imageUrlFavorite String
-  description      String
-  createdAt        DateTime  @default(now())
-  type             MediaType
+  id                  Int       @id @default(autoincrement())
+  name                String    @unique
+  country             String
+  rating              Float?
+  minYearShow         Int
+  imageUrl            String
+  imageUrlTitle       String
+  imageUrlFavorite    String
+  description         String
+  createdAt           DateTime  @default(now())
+  type                MediaType
+  countryAbbreviation String?
 
   duration       Int?
   yearPublishing Int?
 
   rangeYears String?
-  seasons    Season[] @relation("SeasonsSeasons")
-  genres     Genre[]  @relation("MediaGenres")
-	actors    Actors[] @relation("MediaActors")
-	ratings   Rating[]
-	favorites        Favorites[]
+  seasons    Season[]    @relation("SeasonsSeasons")
+  genres     Genre[]     @relation("MediaGenres")
+  actors     Actors[]    @relation("MediaActors")
+  ratings    Rating[]
+  favorites  Favorites[]
 }
 
 model Rating {
-  id          Int     @id @default(autoincrement())
-  userId      Int
-  mediaId     Int
-  score       Int     
-  createdAt   DateTime @default(now())
-  
-  user        User    @relation(fields: [userId], references: [id])
-  media       Media   @relation(fields: [mediaId], references: [id])
+  id        Int      @id @default(autoincrement())
+  userId    Int
+  mediaId   Int
+  score     Int
+  createdAt DateTime @default(now())
 
-  @@unique([userId, mediaId]) 
+  user  User  @relation(fields: [userId], references: [id])
+  media Media @relation(fields: [mediaId], references: [id])
+
+  @@unique([userId, mediaId])
 }
 
 enum MediaType {
@@ -105,9 +106,9 @@ model Genre {
 }
 
 model Actors {
-  id     Int    @id @default(autoincrement())
+  id     Int     @id @default(autoincrement())
   name   String
   role   String
   imgUrl String?
-	media  Media[] @relation("MediaActors")
+  media  Media[] @relation("MediaActors")
 }

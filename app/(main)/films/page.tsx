@@ -1,56 +1,82 @@
 'use client';
 
-import { useGetFilmsQuery } from '@/shared/store/films';
-import { useRouter, useSearchParams } from 'next/navigation';
+import { FiltersResult, Sort } from '@/shared/components';
+import { getFilmsFilters } from '@/shared/services/filter-films';
+import { Media } from '@/shared/types/Media';
+import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
 const FilmsPage = () => {
   const router = useRouter();
-  const searchParams = useSearchParams();
+  const filterArr = [
+    'По популярности',
+    'По новизне',
+    'Зарубежные Фильмы',
+    'Российские Фильмы',
+    'Фильмы 2024',
+    'Фильмы 2023',
+    'Фильмы 2022',
+    'Фильмы 2021',
+  ];
 
-  // Читаем год из параметров URL, если есть
-  const initialYear = searchParams.get('year') ? Number(searchParams.get('year')) : null;
-  const [year, setYear] = useState<number | null>(initialYear);
+  const filterCodes: { [key: string]: string } = {
+    'Зарубежные Фильмы': 'EN',
+    'Российские Фильмы': 'RU',
+    'Фильмы 2024': '2024',
+    'Фильмы 2023': '2023',
+    'Фильмы 2022': '2022',
+    'Фильмы 2021': '2021',
+  };
 
-  // Запрашиваем фильмы с фильтрацией по году
-  const { data, error, isLoading } = useGetFilmsQuery({ year });
+  const [films, setFilms] = useState<Media[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
 
-  // Обработчик нажатий на кнопки фильтрации по году
-  const handleFilter = (selectedYear: number | null) => {
-    setYear(selectedYear);
+  const fetchFilms = async () => {
+    try {
+      setIsLoading(true);
+      const queryString = selectedFilters.map((filter) => filterCodes[filter] || filter).join('/');
+      const result = await getFilmsFilters(queryString, sortType);
 
-    if (selectedYear) {
-      router.push(`/films?year=${selectedYear}`); // Добавляем год в URL
-    } else {
-      router.push('/films'); // Если год не выбран, отображаем все фильмы
+      if (result.length > 0) {
+        setFilms(result);
+      } else {
+        setFilms([]);
+      }
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setIsLoading(false);
     }
   };
 
+  const [selectedFilters, setSelectedFilters] = useState<string[]>([]);
+  const [sortType, setSortType] = useState<'rating' | 'createdAt'>('rating');
+
+  const updateQueryParams = (filters: string[]) => {
+    const queryString = filters.map((filter) => filterCodes[filter] || filter).join('/');
+    router.push(`?query=${queryString}&sort=${sortType}`);
+  };
+
   useEffect(() => {
-    // Если год в URL изменился, обновляем состояние
-    const urlYear = searchParams.get('year') ? Number(searchParams.get('year')) : null;
-    setYear(urlYear);
-  }, [searchParams]);
+    updateQueryParams(selectedFilters);
+    fetchFilms();
+  }, [selectedFilters, sortType]);
 
   return (
     <div className="all">
       <div className="all__container container">
         <div className="all__title">Фильмы смотреть онлайн</div>
         <div className="all__filter">
-          <button onClick={() => handleFilter(null)}>Все фильмы</button>
-          <button onClick={() => handleFilter(2024)}>Фильмы 2024</button>
-          <button onClick={() => handleFilter(2023)}>Фильмы 2023</button>
-          <button onClick={() => handleFilter(2022)}>Фильмы 2022</button>
+          <Sort
+            filterArr={filterArr}
+            setSelectedFilters={setSelectedFilters}
+            selectedFilters={selectedFilters}
+            setSortType={setSortType}
+            sortType={sortType}
+          />
         </div>
+        <FiltersResult media={films} isLoading={isLoading} />
       </div>
-
-      <ul>
-        {isLoading && <p>Загрузка...</p>}
-        {error && <p>Ошибка: пенис</p>}
-        {data?.map((film) => (
-          <li key={film.id}>{film.name}</li>
-        ))}
-      </ul>
     </div>
   );
 };

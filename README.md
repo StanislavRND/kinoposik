@@ -1,36 +1,23 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
-
-## Getting Started
-
-First, run the development server:
-
-```bash
+Кинопосик
+Это проект, созданный с использованием Next.js и create-next-app. Кинопосик — это упрощенная копия premier.one, предназначенная для удобного поиска фильмов и сериалов.
+Начало работы
+Для запуска сервера разработки выполните одну из следующих команд:
+bash
 npm run dev
-# or
+# или
 yarn dev
-# or
+# или
 pnpm dev
-# or
+# или
 bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Откройте http://localhost:3000 в вашем браузере, чтобы увидеть результат.
+Вы можете начать редактировать страницу, изменяя файл app/page.tsx. Страница будет автоматически обновляться при внесении изменений.
+Дополнительная информация
+Чтобы узнать больше о Next.js, ознакомьтесь с следующими ресурсами:
+Документация Next.js — узнайте о возможностях и API Next.js.
+Изучите Next.js — интерактивный учебник по Next.js.
+Вы также можете посетить репозиторий Next.js на GitHub, где ваши отзывы и вклад будут приветствоваться!
+Развертывание на Vercel
+Самый простой способ развернуть ваше приложение на Next.js — использовать платформу Vercel, созданную разработчиками Next.js.
+Дополнительные детали можно найти в документации по развертыванию Next.js..

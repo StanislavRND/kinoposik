@@ -8,7 +8,7 @@ export const StarIcon = ({ isActiveGrade }: Props) => (
     width="32"
     height="32"
     viewBox="0 0 24 24"
-    fill={isActiveGrade ? "white" : "none"}
+    fill={isActiveGrade ? 'white' : 'none'}
     stroke="white"
     strokeWidth="2"
     strokeLinecap="round"

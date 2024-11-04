@@ -1,7 +1,7 @@
 import { prisma } from '@/prisma/prisma.client';
-import { NextResponse } from 'next/server';
 import cookie from 'cookie';
 import jwt from 'jsonwebtoken';
+import { NextResponse } from 'next/server';
 
 export async function GET(request: Request) {
   try {
@@ -20,7 +20,7 @@ export async function GET(request: Request) {
       include: {
         favorites: {
           include: {
-            media: true, 
+            media: true,
           },
         },
       },
@@ -51,9 +51,9 @@ export async function POST(request: Request) {
     const decoded = jwt.verify(token, process.env.JWT_SECRET as string);
     const userId = (decoded as { id: number }).id;
 
-		const { mediaId } = await request.json();
+    const { mediaId } = await request.json();
 
-		if (!mediaId) {
+    if (!mediaId) {
       return NextResponse.json({ error: 'Не указан mediaId' }, { status: 400 });
     }
 

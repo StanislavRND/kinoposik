@@ -22,7 +22,6 @@ export const SearchCom: React.FC = () => {
     };
   }, [searchQuery, router]);
 
-	
   return (
     <>
       <div onClick={() => router.push('/')} className="search__container-back">
@@ -31,7 +30,7 @@ export const SearchCom: React.FC = () => {
       </div>
       <form className="header__form-search" onSubmit={(e) => e.preventDefault()}>
         <label>
-          <Search style={{color: 'white'}} />
+          <Search style={{ color: 'white' }} />
         </label>
         <input
           className="header__sort search__container-input"
