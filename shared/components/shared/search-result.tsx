@@ -7,10 +7,11 @@ import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
-export const SearchResult = () => {
+
+export const SearchResult = ( ) => {
   const [results, setResults] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const searchParams = useSearchParams();
+	const searchParams = useSearchParams();
   const query = searchParams.get('query') || '';
 
   useEffect(() => {

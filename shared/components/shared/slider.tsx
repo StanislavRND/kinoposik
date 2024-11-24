@@ -28,10 +28,10 @@ export const Slider = () => {
           centerMode={true}
           focusOnSelect={false}
           responsive={responsive}>
-          {premieres?.map((el, index) => (
+          {premieres?.map((el) => (
             <Link
               className="slider__img"
-              key={index}
+              key={el.id}
               href={`/watch/${encodeURIComponent(el.name)}`}>
               <img src={el.imageUrl} alt="No img" />
               <div className="slider__rating">{el.rating?.toFixed(1)}</div>

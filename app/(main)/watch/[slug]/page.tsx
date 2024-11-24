@@ -11,7 +11,7 @@ type WatchPageProps = {
 export default async function WatchPage({ params }: WatchPageProps) {
   const { slug } = params;
 
-  const decodedSlug = decodeURIComponent(slug);
+  const decodedSlug = decodeURIComponent(slug).trim()
 
   const mediaItem = await prisma.media.findUnique({
     where: {
@@ -38,12 +38,4 @@ export default async function WatchPage({ params }: WatchPageProps) {
       <MediaDetail mediaDetail={mediaItem} />
     </Suspense>
   );
-}
-
-export async function generateStaticParams() {
-  const mediaItems = await prisma.media.findMany();
-  const paramsArray = mediaItems.map((item) => ({
-    slug: item.name,
-  }));
-  return paramsArray;
 }

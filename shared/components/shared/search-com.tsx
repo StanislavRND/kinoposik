@@ -4,6 +4,7 @@ import { ArrowLeft, Search } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
 
+
 export const SearchCom: React.FC = () => {
   const router = useRouter();
   const [searchQuery, setSearchQuery] = useState('');
