@@ -1,3 +1,4 @@
+version: '3.8'
 services:
   db:
     image: postgres:13
@@ -11,7 +12,7 @@ services:
       - backend
     ports:
       - "5432:5432"
-  
+
   web:
     build: .
     ports:
@@ -22,21 +23,13 @@ services:
       DATABASE_URL: "postgres://default:uhf0SpGw9qyk@ep-shiny-mountain-a4mgcecv-pooler.us-east-1.aws.neon.tech:5432/verceldb?sslmode=require&pgbouncer=true&connect_timeout=15"
     networks:
       - backend
-    command: npm run dev
-  
-  prisma:
-    image: prisma/prisma:latest
+    command: >
+      sh -c "npx prisma migrate deploy && npm run dev"  # Выполняем миграции при запуске
     volumes:
-      - ./prisma:/app/prisma
-    environment:
-      DATABASE_URL: "postgresql://user:password@db:5432/kinoposik_db?schema=public"
-    networks:
-      - backend
-    entrypoint: ["prisma", "migrate", "deploy"]
-
-volumes:
-  postgres_data:
-
+      - .:/app 
 networks:
   backend:
     driver: bridge
+
+volumes:
+  postgres_data:
