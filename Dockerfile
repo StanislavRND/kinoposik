@@ -9,7 +9,6 @@ FROM node:latest
 WORKDIR /app
 COPY --from=builder /app /app
 RUN npm install --production
-RUN npm install @prisma/client
 
 EXPOSE 3000
 CMD ["npm", "start"]
