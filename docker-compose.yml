@@ -1,0 +1,42 @@
+services:
+  db:
+    image: postgres:13
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: kinoposik_db
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - backend
+    ports:
+      - "5432:5432"
+  
+  web:
+    build: .
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+    environment:
+      DATABASE_URL: "postgres://default:uhf0SpGw9qyk@ep-shiny-mountain-a4mgcecv-pooler.us-east-1.aws.neon.tech:5432/verceldb?sslmode=require&pgbouncer=true&connect_timeout=15"
+    networks:
+      - backend
+    command: npm run dev
+  
+  prisma:
+    image: prisma/prisma:latest
+    volumes:
+      - ./prisma:/app/prisma
+    environment:
+      DATABASE_URL: "postgresql://user:password@db:5432/kinoposik_db?schema=public"
+    networks:
+      - backend
+    entrypoint: ["prisma", "migrate", "deploy"]
+
+volumes:
+  postgres_data:
+
+networks:
+  backend:
+    driver: bridge
