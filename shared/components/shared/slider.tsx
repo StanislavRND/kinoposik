@@ -15,6 +15,10 @@ export const Slider = () => {
     },
   };
 
+	if (!premieres || premieres.length === 0) {
+    return <div>Нет премьеров для отображения.</div>;
+  }
+
   return (
     <>
       {isLoading ? (
